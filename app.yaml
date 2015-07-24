@@ -1,0 +1,74 @@
+application: indigo-night-782
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+- url: /static
+  static_dir: static
+
+- url: /event
+  script: event.app
+
+- url: /message
+  script: event.app
+
+- url: /eventlist
+  script: eventlist.app
+
+- url: /createevent
+  script: createevent.app
+
+- url: /index
+  script: eventlist.app
+
+- url: /upload
+  script: createevent.app
+
+- url: /_ah/channel/connected/
+  script: event.app
+
+- url: /_ah/channel/disconnected/
+  script: event.app
+
+- url: /_ah/mail/.+
+  script: emailcomment.app
+
+- url: /twitter
+  script: twitter.app
+
+- url: /createcomment
+  script: formcomment.app
+
+- url: /imageupload
+  script: formcomment.app
+
+- url: /video
+  script: event.app
+
+- url: /admin
+  script: admin.app
+
+- url: /save
+  script: event.app
+
+- url: .*
+  script: eventlist.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: "latest"
+
+inbound_services:
+- channel_presence
+- mail
+
+builtins:
+- deferred: on
+

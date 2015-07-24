@@ -1,0 +1,4 @@
+cron:
+- description: twitter scrape
+  url: /twitter
+  schedule: every 20 mins

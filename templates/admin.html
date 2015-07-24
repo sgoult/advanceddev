@@ -1,0 +1,12 @@
+{% extends "/templates/_base.html" %}
+{% block content %}
+    {% if isdelegate %}
+    <a href="/createcomment">Create Comment</a><br>
+    <a href="/editevent">Edit Event</a><br>
+    {% endif %}
+    {% if isadmin %}
+    <a href="/createevent">Create Event</a><br>
+    <a href="/createcomment">Create Comment</a><br>
+    <a href="/editevent">Edit Event</a><br>
+    {% endif %}
+{% endblock %}
